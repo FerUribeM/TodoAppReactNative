@@ -7,8 +7,14 @@ import AppButton from "../components/AppButton";
 import * as firebase from 'firebase';
 
 export default class Welcome extends Component {
+    static navigationOptions = {
+        title : 'Expo App'
+    };
     login(){
-
+        const navigationActions = NavigationActions.navigate({
+            routeName : 'Login'
+        });
+        this.props.navigation.dispatch(navigationActions)
     }
     register(){
 
