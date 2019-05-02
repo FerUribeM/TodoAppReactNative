@@ -1,6 +1,7 @@
 import React from 'react';
 import {StackNavigator} from "react-navigation";
 import WelcomeScreen from "../screens/Welcome";
+import RegisterScreen from "../screens/Register";
 import LoginScreen from "../screens/Login";
 
 export default StackNavigator(
@@ -10,6 +11,9 @@ export default StackNavigator(
         },
         Login : {
             screen : LoginScreen
+        },
+        Register : {
+            screen : RegisterScreen
         },
     },
     {

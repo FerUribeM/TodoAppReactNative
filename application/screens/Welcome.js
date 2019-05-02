@@ -17,7 +17,10 @@ export default class Welcome extends Component {
         this.props.navigation.dispatch(navigationActions)
     }
     register(){
-
+        const navigationActions = NavigationActions.navigate({
+            routeName : 'Register'
+        });
+        this.props.navigation.dispatch(navigationActions)
     }
     async facebook(){
 
