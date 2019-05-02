@@ -38,28 +38,43 @@ export default class Login extends Component{
             }
         };
     }
-
+    
     login(){
-
+        const validate = this.refs.form.getValue()
+        if(validate){
+            firebase.auth().signInWithEmailAndPassword(validate.email, validate.password)
+            .then(() => {
+                Toast.showWithGravity("Bienvenido", Toast.LONG, Toast.BOTTOM);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                if(errorCode === 'auth/wrong-password'){
+                    Toast.showWithGravity("Password incorrecto", Toast.LONG, Toast.BOTTOM);
+                }else{
+                    Toast.showWithGravity(errorMessage, Toast.LONG, Toast.BOTTOM);
+                }
+            });
+        }
     }
 
     render(){
         return(
             <BackgroundImage source={require('../../assets/images/image.png')}>
                 <View>
-                    <Card wrapperStyle={{paddingLeft : 10}}
+                    <Card wrapperStyle={{paddingLeft : 10, paddingRight : 10}}
                         title="Iniciar sesión">
                             <Form 
                                 ref="form"
                                 type={this.user}
                                 options={this.options}/>
-                           <AppButton 
-                                bgColor="rgba(111,38,74, 0.7)"
-                                title="Login"
-                                action={this.login.bind(this)}
-                                iconName="sign-in"
-                                iconSize={30}
-                                iconColor="#FFF"/>
+                                <AppButton 
+                                    bgColor="rgba(111,38,74, 0.7)"
+                                    title="Login"
+                                    action={this.login.bind(this)}
+                                    iconName="sign-in"
+                                    iconSize={30}
+                                    iconColor="#FFF"/>
                     </Card>
                 </View>
             </BackgroundImage>
