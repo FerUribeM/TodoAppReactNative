@@ -53,7 +53,12 @@ export default class Welcome extends Component {
                         iconSize={30}
                         iconColor="#FFF"
                     />
+            
                 </View>
+
+
+
+                
             </BackgroundImage>
         );
     }

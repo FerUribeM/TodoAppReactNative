@@ -50,7 +50,7 @@ export default class Register extends Component{
                 },
                 password_confirmation :{
                     help : 'Introduce tu password',
-                    error : 'Contraseña incorrecta',
+                    error : 'Los passwords no coinciden',
                     password : true,
                     secureTextEntry: true,
                 }
@@ -63,7 +63,14 @@ export default class Register extends Component{
     register(){
         this.validate = this.refs.form.getValue();
         if(this.validate){
-
+            firebase.auth().createUserWithEmailAndPassword(
+                this.validate.email, this.validate.password
+            ).then(() => {
+                Toast.showWithGravity('Registro correcto, bienvenido', Toast.LONG, Toast.BOTTOM);
+            })
+            .catch(err => {
+                Toast.showWithGravity(err.message, Toast.LONG, Toast.BOTTOM);
+            })
         }
     }
 
@@ -84,7 +91,7 @@ export default class Register extends Component{
                             value={this.state.user}/>
                         <AppButton 
                                     bgColor="rgba(200,200,50, 0.9)"
-                                    title="Login"
+                                    title="Registrarme"
                                     action={this.register.bind(this)}
                                     iconName="user-plus"
                                     iconSize={30}
