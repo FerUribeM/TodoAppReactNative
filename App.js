@@ -1,12 +1,11 @@
 import React from 'react';
-import { Text } from 'react-native-elements';
 import firebaseConfig from './application/utils/firebase';
 import * as firebase from 'firebase';
 
 import GestNavigation from './application/navigations/guest';
 
 import PreLoader from './application/components/PreLoader';
-
+import LoggedNavigation from './application/navigations/logged';
 
 firebase.initializeApp(firebaseConfig)
 
@@ -47,7 +46,7 @@ export default class App extends React.Component {
       }
 
       if(isLogged){
-        return(<Text style={{color: 'red'}}>Loggeado</Text>)
+        return(<LoggedNavigation/>)
       }else{
         return(<GestNavigation/>)
       }

@@ -16,6 +16,7 @@ export default class AppButton extends Component{
                     borderColor: "transparent",
                     borderWidth : 0,
                     borderRadius : 5,
+                    marginTop : 10,
                 }}
                 title={title}
                 icon={ <Icon name={iconName} size={15} color={iconColor} style={{ marginLeft: 10 }}/> }
