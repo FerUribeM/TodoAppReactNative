@@ -22,7 +22,27 @@ export default class CommentForm extends Component {
 	}
 
 	addComment(){
+		const validate = this.refs.form.getValue();
+		if(validate){
+			let data = {};
+			let comment = Object.assign({}, validate);
+			let ref = firebase.database().ref().child('comments');
+			const key = ref.push().key
 
+			data[`${this.props.restaurantId}/${key}`] = comment
+
+			ref.update(data).then(() => {
+				this.setState((prevState, props) => {
+					return {
+						comment: {
+							comment: '',
+							rating: 1
+						}
+					}
+				});
+				Toast.showWithGravity('Comentario publicado', Toast.LONG, Toast.TOP);
+			})
+		}
 	}
 
 	onChange (comment) {
