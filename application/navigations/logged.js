@@ -2,6 +2,7 @@ import React from 'react';
 import RestaurantsScreen from "../screens/Restaurants/Restaurants";
 import AddRestaurantScreen from "../screens/Restaurants/AddRestaurant";
 import LogoutScreen from "../screens/Logout";
+import DetailRestaurantScreen from "../screens/Restaurants/DetailRestaurant";
 
 import {DrawerNavigator, StackNavigator} from "react-navigation";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -32,7 +33,7 @@ const leftIcon = (navigation, icon) => <Icon
 
 const rightIcon = (navigation, icon) => <Icon
 	name={icon}
-	style={{marginLeft: 20}}
+	style={{marginRight: 20}}
 	size={30}
 	color="white"
 	onPress={() => navigation.navigate('ListRestaurants')}
@@ -57,6 +58,14 @@ const restaurantsScreenStack = StackNavigator(
 				headerLeft: leftIcon(navigation, 'bars'),
 			})
 		},
+		DetailRestaurant: {
+			screen: DetailRestaurantScreen,
+			navigationOptions: ({navigation}) => ({
+				title: 'Detalle del restaurante',
+				headerRight: rightIcon(navigation, 'home'),
+				headerLeft: leftIcon(navigation, 'bars'),
+			})
+		}
     },
     navigationOptions
 );

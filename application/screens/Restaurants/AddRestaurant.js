@@ -29,8 +29,8 @@ export default class AddRestaurant extends Component {
 			const key = firebase.database().ref().child('restaurants').push().key;
 			data[`restaurants/${key}`] = this.state.restaurant;
 			firebase.database().ref().update(data).then(() => {
-				Toast.showWithGravity('Restaurante dado de alta', Toast.LONG, Toast.BOTTOM);
 				this.props.navigation.navigate('ListRestaurants');
+				Toast.showWithGravity('Restaurante dado de alta', Toast.LONG, Toast.BOTTOM);
 			});
 		}
 	}
@@ -61,8 +61,7 @@ export default class AddRestaurant extends Component {
 							action={this.save.bind(this)}
 							iconName="plus"
 							iconSize={30}
-							iconColor="#fff"
-						/>
+							iconColor="#fff"/>
 					</Card>
 				</View>
 			</BackgroundImage>
