@@ -4,6 +4,8 @@ import * as firebase from 'firebase';
 import {View, StyleSheet,FlatList} from "react-native";
 import PreLoader from "../../components/PreLoader";
 import CommentEmpty from "../../components/Comment/CommentEmpty";
+import Comment from "../../components/Comment/Comment";
+
 
 export default class CommentList extends Component{
     constructor(){
@@ -55,7 +57,7 @@ export default class CommentList extends Component{
 
     renderComment(comment){
         return(
-            <Text>{comment.comment}</Text>
+            <Comment comment={comment}/>
         )
     }
 

@@ -3,6 +3,7 @@ import RestaurantsScreen from "../screens/Restaurants/Restaurants";
 import AddRestaurantScreen from "../screens/Restaurants/AddRestaurant";
 import LogoutScreen from "../screens/Logout";
 import DetailRestaurantScreen from "../screens/Restaurants/DetailRestaurant";
+import EditRestaurantScreen from "../screens/Restaurants/EditRestaurant";
 
 import {DrawerNavigator, StackNavigator} from "react-navigation";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -64,6 +65,13 @@ const restaurantsScreenStack = StackNavigator(
 				title: 'Detalle del restaurante',
 				headerRight: rightIcon(navigation, 'home'),
 				headerLeft: leftIcon(navigation, 'bars'),
+			})
+		},
+		EditRestaurant: {
+			screen : EditRestaurantScreen,
+			navigationOptions : ({navigation}) =>({
+				title: 'Editar restaurante',
+				headerRight: rightIcon(navigation, 'home'),
 			})
 		}
     },
